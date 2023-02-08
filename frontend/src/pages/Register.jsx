@@ -4,13 +4,13 @@ function Register() {
     return (
         <div className="login">
             <h1>Account Reguster</h1>
-            <form className="auth">
+            <form className="auth row">
                 <div className="welcome">
                     <h2>Welcome To City Center</h2>
                     <p>If you have an account click here.</p>
                     <h2>LOGIN</h2>
                 </div>
-                <div className="inputs">
+                <div className="inputs column">
                     <input type="username" id="input-field" placeholder="username" />
                     <input type="email" id="input-field" placeholder="Email" />
                     <input type="password" id="input-field" placeholder="Password" />

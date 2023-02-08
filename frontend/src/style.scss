@@ -1,0 +1,85 @@
+$lightBlack: #2b2b2b;
+$red: #b11616;
+$darkGray: #474747;
+$whiteGray: #f3f3f3;
+$fontP: #2b2b2b;
+
+.app {
+
+    .hr {
+        border: 1px solid $darkGray;
+    }
+
+    .gray {
+        color: $whiteGray !important;
+    }
+
+    .red {
+        background-color: #9a1313;
+    }
+
+    .row {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .column {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .link {
+        text-decoration: none;
+        color: #936775;
+    }
+
+    //LOGIN & REGISTER
+
+    .login {
+
+        background-image: url(./assets/pikrepo.jpg);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        width: 100%;
+        height: 100vh;
+        color: rgb(186, 181, 181);
+
+        h1 {
+            color: $red;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .auth {
+            align-items: center;
+            justify-content: center;
+            height: 50vh;
+
+            .welcome {
+                flex: 1.5;
+
+                h2 {
+                    color: rgb(103, 86, 86);
+                }
+            }
+
+            .inputs {
+                gap: 1rem;
+                flex: 1;
+
+                input {
+                    font-size: 1.5rem;
+                }
+
+                .submit {
+                    background-color: transparent;
+                    color: white;
+                    border: none;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
