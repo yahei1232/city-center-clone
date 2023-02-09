@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom'
 
 function Register() {
     return (
@@ -8,7 +9,7 @@ function Register() {
                 <div className="welcome">
                     <h2>Welcome To City Center</h2>
                     <p>If you have an account click here.</p>
-                    <h2>LOGIN</h2>
+                    <Link className='link' to='/login'>LOGIN</Link>
                 </div>
                 <div className="inputs column">
                     <input type="username" id="input-field" placeholder="username" />
