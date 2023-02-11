@@ -41,9 +41,17 @@ function Navbar() {
 
                             {showMenu && (
                                 <ul className="menu" >
-                                    <li>Login</li>
-                                    <li>Reguster</li>
-                                    <li>Item 3</li>
+                                    <li>
+                                        <Link className='link' to='/login'>
+                                            Login
+                                        </Link>
+                                    </li>
+                                    <li>
+                                        <Link className='link' to='/register'>
+                                            Reguster
+                                        </Link>
+                                    </li>
+                                    <li>logout</li>
                                 </ul>
                             )}
                         </div>
