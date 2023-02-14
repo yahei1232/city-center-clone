@@ -1,7 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Navbar from '../components/Navbar'
+import Sliders from '../components/Sliders'
 function Home() {
+
+    const bigImgLinks = [
+        'https://citycenter.jo/image/catalog/banners/generic-fury-banner.jpg',
+        'https://citycenter.jo/image/catalog/banners/save-the-universe.jpg',
+        'https://citycenter.jo/image/catalog/2021/banners/flexweb.jpg',
+    ]
 
     return (
         <div className='home'>
@@ -9,7 +16,7 @@ function Home() {
             <div className="bacgr-col">
                 <img className='adv-row' src="https://citycenter.jo/image/catalog/banners/generic-fury-banner.jpg" alt="" />
             </div>
-
+            <Sliders asd={bigImgLinks} />
             <div className="row most-imb">
                 <div className="column comp red">
                     <img src="https://citycenter.jo/image/catalog/banners/sale-icon-city3.png" alt="" width='40px' height="40px" />
@@ -28,11 +35,9 @@ function Home() {
                     <h4>END 2022 SALE !!</h4>
                 </div>
             </div>
-
             <div className="bacgr-col">
                 <img className='adv-row' src="https://citycenter.jo/image/catalog/banners/save-the-universe.jpg" alt="" />
             </div>
-
             <div className="computer-C-G row">
                 <div className="computer-hardware row">
                     <div className="words column">
@@ -51,7 +56,6 @@ function Home() {
                     <img src="https://citycenter.jo/image/catalog/2021/banners/gungun-opt.png" alt="" width='289.300px' height='289.300px' />
                 </div>
             </div>
-
         </div>
     )
 }
