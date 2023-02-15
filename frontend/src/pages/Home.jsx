@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Navbar from '../components/Navbar'
+import SlideItems from '../components/SlideItems'
 import Sliders from '../components/Sliders'
 function Home() {
 
@@ -8,6 +9,26 @@ function Home() {
         'https://citycenter.jo/image/catalog/banners/generic-fury-banner.jpg',
         'https://citycenter.jo/image/catalog/banners/save-the-universe.jpg',
         'https://citycenter.jo/image/catalog/2021/banners/flexweb.jpg',
+    ]
+    const smallImgLinks = [
+        'https://image.citycenter.jo/cachewebp/catalog/0112022/P1I5-550x400.webp',
+        'https://image.citycenter.jo/cachewebp/catalog/092022/KK340010-550x400.webp',
+        'https://image.citycenter.jo/cachewebp/catalog/0112022/x15029-550x400.webp',
+        'https://image.citycenter.jo/cachewebp/catalog/0112022/x15029-550x400.webp',
+        'https://image.citycenter.jo/cachewebp/catalog/0112022/x15029-550x400.webp',
+    ]
+    const title = [
+        'asd',
+        'qwe',
+        'zxc',
+    ]
+    const price = [
+        321,
+        3212,
+        32123,
+    ]
+    const topDesc = [
+        'TOP Laptops For Home & Office',
     ]
 
     return (
@@ -56,6 +77,7 @@ function Home() {
                     <img src="https://citycenter.jo/image/catalog/2021/banners/gungun-opt.png" alt="" width='289.300px' height='289.300px' />
                 </div>
             </div>
+            <SlideItems image={smallImgLinks} title={title} price={price} topDesc={topDesc} />
         </div>
     )
 }
