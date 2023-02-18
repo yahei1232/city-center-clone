@@ -1,0 +1,65 @@
+import React from 'react'
+
+function item() {
+    return (
+        <div className='item column'>
+            <div className="top">
+                <div className="leftSide">
+                    <h1>title</h1>
+                    <p>description</p>
+                    <img width='350px' height='350px' src="https://image.citycenter.jo/cachewebp/catalog/0112022/CK000-1200x1200.webp" alt="" />
+                    <hr />
+                </div>
+                <div className="rightSide">
+                    <div className='row spa'>
+                        <div className="price">
+                            <h1>$549</h1>
+                            <h3>$729.00</h3>
+                            <h5>You save $50.00</h5>
+                        </div>
+                        <div className="type">
+                            <div className="row">
+                                <h3>Availability: </h3>
+                                <p> In Stock</p>
+                            </div>
+                            <div className="row">
+                                <h3>Product Code: </h3>
+                                <p> 6J7G3EA</p>
+                            </div>
+                            <div className="row">
+                                <h3>Brand: </h3>
+                                <p> HP</p>
+                            </div>
+                        </div>
+                    </div>
+                    <hr className='hr' />
+                    <div className="add-to-cart row">
+                        <input min="1" type="number" className='the-number' />
+                        <button className='the-number add'>Add to Cart</button>
+                        <button className='the-number get'>Get off by Email</button>
+                    </div>
+                </div>
+            </div>
+            <div className="bottom column" style={{ marginTop: "3rem" }}>
+                <h4>Detals:</h4>
+                <div className="row aic">
+                    <h5>cpu</h5>
+                    <p>{item.cpu}</p>
+                </div>
+                <hr />
+                <div className="row aic">
+                    <h5>gpu</h5>
+                    <p>{item.gpu}</p>
+                </div>
+                <hr />
+                <div className="row aic">
+                    <h5>memory</h5>
+                    <p>{item.memory}</p>
+                </div>
+                <hr />
+            </div>
+        </div>
+    )
+}
+
+export default item

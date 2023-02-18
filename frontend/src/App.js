@@ -3,6 +3,7 @@ import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
 import Items from "./pages/Items";
+import Item from "./pages/Item";
 import "./style.scss"
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
             <Route path="/items" element={<Items />} />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/item/:id" element={<Item />} />
           </Routes>
         </Router>
       </div>
