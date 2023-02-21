@@ -7,6 +7,14 @@ import ListSharpIcon from '@mui/icons-material/ListSharp';
 
 function Items() {
 
+    const [cpu, setCpu] = useState('');
+    const [gpu, setGpu] = useState('');
+    const [memory, setMemory] = useState('');
+    const [priceMin, setPriceMin] = useState('');
+    const [priceMax, setPriceMax] = useState('');
+
+
+
     const show = [
         { value: "16", label: 16 },
         { value: "25", label: 25 },
@@ -32,6 +40,57 @@ function Items() {
                     <h3>Audo</h3>
                 </div>
             </div>
+            <hr />
+
+
+            <form
+                className='filter'
+                onSubmit={e => {
+                    e.preventDefault();
+                }}>
+                <label>
+                    CPU:
+                    <select value={cpu} onChange={e => setCpu(e.target.value)}>
+                        <option value="">Select CPU</option>
+                        <option value="Intel Core i7">Intel Core i7</option>
+                        <option value="Intel Core i9">Intel Core i9</option>
+                        <option value="AMD Ryzen 5">AMD Ryzen 5</option>
+                        <option value="AMD Ryzen 7">AMD Ryzen 7</option>
+                    </select>
+                </label>
+                <br />
+                <label>
+                    GPU:
+                    <select value={gpu} onChange={e => setGpu(e.target.value)}>
+                        <option value="">Select GPU</option>
+                        <option value="Nvidia GeForce RTX 3060">Nvidia GeForce RTX 3060</option>
+                        <option value="AMD Radeon RX 6700 XT">AMD Radeon RX 6700 XT</option>
+                        <option value="RTX 3050TI">RTX 3050TI</option>
+                    </select>
+                </label>
+                <br />
+                <label>
+                    Memory:
+                    <select value={memory} onChange={e => setMemory(e.target.value)}>
+                        <option value="">Select Memory</option>
+                        <option value="8">8 GB</option>
+                        <option value="16">16 GB</option>
+                        <option value="32">32 GB</option>
+                    </select>
+                </label>
+                <br />
+                <label>
+                    Price Min:
+                    <input type="number" value={priceMin} onChange={e => setPriceMin(e.target.value)} />
+                </label>
+                <br />
+                <label>
+                    Price Max:
+                    <input type="number" value={priceMax} onChange={e => setPriceMax(e.target.value)} />
+                </label>
+                <br />
+                <button type="submit">Filter</button>
+            </form>
             <hr />
 
             <div className="grid-show row">
