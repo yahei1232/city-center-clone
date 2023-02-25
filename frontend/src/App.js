@@ -6,6 +6,7 @@ import Items from "./pages/Items";
 import Item from "./pages/Item";
 import "./style.scss"
 import Cart from "./pages/Cart";
+import Profile from "./pages/Profile";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/item/:id" element={<Item />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/profile" element={<Profile />} />
           </Routes>
         </Router>
       </div>
