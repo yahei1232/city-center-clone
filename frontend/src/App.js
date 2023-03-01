@@ -8,6 +8,7 @@ import "./style.scss"
 import Cart from "./pages/Cart";
 import Profile from "./pages/Profile";
 import ItemsSearch from "./pages/ItemSearch";
+import Filter from "./components/Filter";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route path="/cart" element={<Cart />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/itemssearch" element={<ItemsSearch />} />
+            <Route path="/filter" element={<Filter />} />
           </Routes>
         </Router>
       </div>
