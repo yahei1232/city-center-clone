@@ -9,6 +9,8 @@ import Cart from "./pages/Cart";
 import Profile from "./pages/Profile";
 import ItemsSearch from "./pages/ItemSearch";
 import Filter from "./components/Filter";
+//ADMIN PAGE
+import AdminNavbar from "./admin/admincomponents/Navbar";
 
 function App() {
   return (
@@ -25,6 +27,7 @@ function App() {
             <Route path="/profile" element={<Profile />} />
             <Route path="/itemssearch" element={<ItemsSearch />} />
             <Route path="/filter" element={<Filter />} />
+            <Route path="/adminnavbar" element={<AdminNavbar />} />
           </Routes>
         </Router>
       </div>
