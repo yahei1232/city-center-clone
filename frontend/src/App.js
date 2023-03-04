@@ -11,6 +11,7 @@ import ItemsSearch from "./pages/ItemSearch";
 import Filter from "./components/Filter";
 //ADMIN PAGE
 import AdminNavbar from "./admin/admincomponents/Navbar";
+import AdminSidebar from "./admin/admincomponents/Sidebar";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
             <Route path="/itemssearch" element={<ItemsSearch />} />
             <Route path="/filter" element={<Filter />} />
             <Route path="/adminnavbar" element={<AdminNavbar />} />
+            <Route path="/adminsidebar" element={<AdminSidebar />} />
           </Routes>
         </Router>
       </div>
