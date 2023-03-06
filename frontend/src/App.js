@@ -1,14 +1,17 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import "./style.scss"
+import "./admin/adminstyle.scss"
+
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
 import Items from "./pages/Items";
 import Item from "./pages/Item";
-import "./style.scss"
 import Cart from "./pages/Cart";
 import Profile from "./pages/Profile";
 import ItemsSearch from "./pages/ItemSearch";
 import Filter from "./components/Filter";
+
 //ADMIN PAGE
 import AdminNavbar from "./admin/admincomponents/Navbar";
 import AdminSidebar from "./admin/admincomponents/Sidebar";
