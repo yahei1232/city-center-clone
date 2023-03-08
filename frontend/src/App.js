@@ -20,6 +20,7 @@ import AdminProductlist from "./admin/pages/Productlist";
 import AdminUpdateProduct from "./admin/pages/Updateproduct";
 import AdminNewProduct from "./admin/pages/NewProduct";
 import AdminNewUser from "./admin/pages/NewUser";
+import AdminOrderslist from "./admin/pages/Orderlist";
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
             <Route path="/adminupdateproduct" element={<AdminUpdateProduct />} />
             <Route path="/adminnewproduct" element={<AdminNewProduct />} />
             <Route path="/adminnewuser" element={<AdminNewUser />} />
+            <Route path="/adminorderslist" element={<AdminOrderslist />} />
           </Routes>
         </Router>
       </div>
