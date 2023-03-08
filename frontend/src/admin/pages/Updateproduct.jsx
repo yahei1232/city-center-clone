@@ -1,6 +1,6 @@
 import PublishSharpIcon from '@mui/icons-material/PublishSharp';
 import { useState } from "react";
-export default function Product() {
+export default function Updateproduct() {
 
     const [name, setName] = useState('');
     const [description, setDescription] = useState('');
