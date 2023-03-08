@@ -16,6 +16,7 @@ import Filter from "./components/Filter";
 import AdminNavbar from "./admin/admincomponents/Navbar";
 import AdminSidebar from "./admin/admincomponents/Sidebar";
 import AdminHome from "./admin/pages/Home";
+import AdminProductlist from "./admin/pages/Productlist";
 
 function App() {
   return (
@@ -34,7 +35,8 @@ function App() {
             <Route path="/filter" element={<Filter />} />
             <Route path="/adminnavbar" element={<AdminNavbar />} />
             <Route path="/adminsidebar" element={<AdminSidebar />} />
-            <Route path="/AdminHome" element={<AdminHome />} />
+            <Route path="/adminhome" element={<AdminHome />} />
+            <Route path="/adminproductlist" element={<AdminProductlist />} />
           </Routes>
         </Router>
       </div>
