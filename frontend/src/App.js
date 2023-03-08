@@ -18,6 +18,7 @@ import AdminSidebar from "./admin/admincomponents/Sidebar";
 import AdminHome from "./admin/pages/Home";
 import AdminProductlist from "./admin/pages/Productlist";
 import AdminUpdateProduct from "./admin/pages/Updateproduct";
+import AdminNewProduct from "./admin/pages/NewProduct";
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
             <Route path="/adminhome" element={<AdminHome />} />
             <Route path="/adminproductlist" element={<AdminProductlist />} />
             <Route path="/adminupdateproduct" element={<AdminUpdateProduct />} />
+            <Route path="/adminnewproduct" element={<AdminNewProduct />} />
           </Routes>
         </Router>
       </div>
