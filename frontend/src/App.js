@@ -19,6 +19,7 @@ import AdminHome from "./admin/pages/Home";
 import AdminProductlist from "./admin/pages/Productlist";
 import AdminUpdateProduct from "./admin/pages/Updateproduct";
 import AdminNewProduct from "./admin/pages/NewProduct";
+import AdminNewUser from "./admin/pages/NewUser";
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
             <Route path="/adminproductlist" element={<AdminProductlist />} />
             <Route path="/adminupdateproduct" element={<AdminUpdateProduct />} />
             <Route path="/adminnewproduct" element={<AdminNewProduct />} />
+            <Route path="/adminnewuser" element={<AdminNewUser />} />
           </Routes>
         </Router>
       </div>
