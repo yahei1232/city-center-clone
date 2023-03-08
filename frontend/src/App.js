@@ -15,6 +15,7 @@ import Filter from "./components/Filter";
 //ADMIN PAGE
 import AdminNavbar from "./admin/admincomponents/Navbar";
 import AdminSidebar from "./admin/admincomponents/Sidebar";
+import AdminHome from "./admin/pages/Home";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
             <Route path="/filter" element={<Filter />} />
             <Route path="/adminnavbar" element={<AdminNavbar />} />
             <Route path="/adminsidebar" element={<AdminSidebar />} />
+            <Route path="/AdminHome" element={<AdminHome />} />
           </Routes>
         </Router>
       </div>
