@@ -1,7 +1,11 @@
 import express from "express";
 const app = express();
 
+import authRoutes from "./routes/auth.js";
+
 app.use(express.json());
+
+app.use("/api/auth", authRoutes);
 
 //API CONNECT
 app.listen(8800, () => {
