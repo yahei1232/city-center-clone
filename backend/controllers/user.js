@@ -1,4 +1,6 @@
 import { db } from "../connect.js";
+import jwt from "jsonwebtoken";
+import bcrypt from "bcrypt";
 
 export const getUsers = (req, res) => {
     const q = "SELECT * FROM user";
