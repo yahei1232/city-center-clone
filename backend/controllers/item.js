@@ -1,0 +1,24 @@
+import { db } from "../connect.js";
+
+
+export const addItem = (req, res) => {
+
+    const q =
+        "INSERT INTO item(`name`, `description`, `price`, `img`, `catId`, `memory`, `cpu`, `gpu`) VALUES (?)";
+
+    const values = [
+        req.body.name,
+        req.body.description,
+        req.body.price,
+        req.body.img,
+        req.body.catId,
+        req.body.memory,
+        req.body.cpu,
+        req.body.gpu,
+    ];
+    console.log(values);
+    db.query(q, [values], (err, data) => {
+        if (err) return res.status(500).json(err);
+        return res.json("Item has been created.");
+    });
+};
