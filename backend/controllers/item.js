@@ -22,3 +22,14 @@ export const addItem = (req, res) => {
         return res.json("Item has been created.");
     });
 };
+
+
+export const items = (req, res) => {
+
+    let query = `SELECT * FROM item ORDER BY price ASC`;
+
+    db.query(query, (err, data) => {
+        if (err) return res.status(500).json(err);
+        return res.status(200).json(data);
+    });
+};
