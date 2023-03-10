@@ -92,11 +92,25 @@ export const editItem = (req, res) => {
 export const deleteitems = (req, res) => {
     const itemId = req.params.id;
     const q = "DELETE FROM item WHERE `id` = ?";
-    // console.log(11);
     db.query(q, [itemId], (err, data) => {
         console.log(err);
         if (err) return res.status(403).json("You can delete only your ITEM!");
         console.log(data);
         return res.json("ITEM has been deleted!");
+    });
+};
+
+export const searchItems = (req, res) => {
+    // const { name } = req.query;
+    const name = req.params.name;
+    // console.log(11);
+    const sql = `SELECT * FROM item WHERE name LIKE '%${name}%'`;
+    db.query(sql, (error, results) => {
+        if (error) {
+            console.error(error);
+            res.status(500).send("Error fetching results");
+        } else {
+            res.json(results);
+        }
     });
 };

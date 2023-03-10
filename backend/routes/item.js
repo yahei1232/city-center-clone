@@ -4,7 +4,8 @@ import {
     items,
     getItems,
     editItem,
-    deleteitems
+    deleteitems,
+    searchItems
 } from "../controllers/item.js";
 
 const router = express.Router();
@@ -14,5 +15,6 @@ router.get("/items", items);
 router.get("/:id", getItems);
 router.put("/:id", editItem);
 router.delete("/deleteitems/:id", deleteitems);
+router.get("/search/:name", searchItems);
 
 export default router;
