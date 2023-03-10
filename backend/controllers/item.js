@@ -48,3 +48,43 @@ export const getItems = (req, res) => {
         return res.status(200).json(data);
     });
 };
+
+export const editItem = (req, res) => {
+
+    const itemId = req.params.id;
+
+    const q = `
+    UPDATE item 
+    SET 
+    name = ?, 
+    description = ?, 
+    price = ?, 
+    img = ?, 
+    catId = ?, 
+    memory = ?, 
+    cpu = ?, 
+    gpu = ?
+    WHERE 
+    id = ${itemId}
+    `;
+
+    const values = [
+        req.body.name,
+        req.body.description,
+        req.body.price,
+        req.body.img,
+        req.body.catId,
+        req.body.memory,
+        req.body.cpu,
+        req.body.gpu,
+    ];
+
+    db.query(q, values, (err, data) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).json(err);
+        }
+
+        return res.json("Product has been updated.");
+    });
+};
