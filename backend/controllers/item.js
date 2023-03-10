@@ -101,10 +101,24 @@ export const deleteitems = (req, res) => {
 };
 
 export const searchItems = (req, res) => {
-    // const { name } = req.query;
     const name = req.params.name;
-    // console.log(11);
     const sql = `SELECT * FROM item WHERE name LIKE '%${name}%'`;
+    db.query(sql, (error, results) => {
+        if (error) {
+            console.error(error);
+            res.status(500).send("Error fetching results");
+        } else {
+            res.json(results);
+        }
+    });
+};
+
+export const getRendomItems = (req, res) => {
+
+    const sql = `
+    SELECT * FROM item
+    ORDER BY RAND()
+    LIMIT 8;`;
     db.query(sql, (error, results) => {
         if (error) {
             console.error(error);
