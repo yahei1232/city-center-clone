@@ -128,3 +128,19 @@ export const getRendomItems = (req, res) => {
         }
     });
 };
+
+export const getRendomItemsADS = (req, res) => {
+
+    const sql = `
+    SELECT * FROM item
+    ORDER BY RAND()
+    LIMIT 3;`;
+    db.query(sql, (error, results) => {
+        if (error) {
+            console.error(error);
+            res.status(500).send("Error fetching results");
+        } else {
+            res.json(results);
+        }
+    });
+};
