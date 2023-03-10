@@ -36,3 +36,22 @@ export const getOrder = (req, res) => {
         return res.json(data);
     });
 };
+
+export const doneOrder = (req, res) => {
+    const orderId = req.params.id;
+
+    console.log(orderId);
+
+    const q = `
+    UPDATE orders 
+    SET 
+    status = 'done'
+    WHERE 
+    id = ${orderId}
+    `;
+
+    db.query(q, (err, data) => {
+        if (err) return res.status(500).json(err);
+        return res.json(data);
+    });
+};
