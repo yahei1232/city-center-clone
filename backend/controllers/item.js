@@ -88,3 +88,15 @@ export const editItem = (req, res) => {
         return res.json("Product has been updated.");
     });
 };
+
+export const deleteitems = (req, res) => {
+    const itemId = req.params.id;
+    const q = "DELETE FROM item WHERE `id` = ?";
+    // console.log(11);
+    db.query(q, [itemId], (err, data) => {
+        console.log(err);
+        if (err) return res.status(403).json("You can delete only your ITEM!");
+        console.log(data);
+        return res.json("ITEM has been deleted!");
+    });
+};
