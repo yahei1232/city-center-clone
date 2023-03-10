@@ -7,6 +7,7 @@ import authRoutes from "./routes/auth.js";
 import userRoutes from "./routes/user.js";
 import itemRoutes from "./routes/item.js";
 import orderRoutes from "./routes/order.js";
+import stripeRoute from "./routes/strip.js";
 
 app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', '*');
@@ -24,6 +25,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/user", userRoutes);
 app.use("/api/item", itemRoutes);
 app.use("/api/order", orderRoutes);
+app.use("/api/checkout", stripeRoute);
 
 //API CONNECT
 app.listen(8800, () => {
