@@ -25,3 +25,14 @@ export const order = (req, res) => {
         });
     });
 };
+
+export const getOrder = (req, res) => {
+
+    const q =
+        "SELECT * FROM orders";
+
+    db.query(q, (err, data) => {
+        if (err) return res.status(500).json(err);
+        return res.json(data);
+    });
+};
