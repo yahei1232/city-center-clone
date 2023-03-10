@@ -40,8 +40,6 @@ export const getOrder = (req, res) => {
 export const doneOrder = (req, res) => {
     const orderId = req.params.id;
 
-    console.log(orderId);
-
     const q = `
     UPDATE orders 
     SET 
@@ -53,5 +51,16 @@ export const doneOrder = (req, res) => {
     db.query(q, (err, data) => {
         if (err) return res.status(500).json(err);
         return res.json(data);
+    });
+};
+
+export const deleteOrder = (req, res) => {
+    const orderId = req.params.id;
+    const q = "DELETE FROM orders WHERE `id` = ?";
+    db.query(q, [orderId], (err, data) => {
+        console.log(err);
+        if (err) return res.status(403).json("something want wrong!");
+        console.log(data);
+        return res.json("order has been deleted!");
     });
 };
