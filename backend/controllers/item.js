@@ -33,3 +33,18 @@ export const items = (req, res) => {
         return res.status(200).json(data);
     });
 };
+
+export const getItems = (req, res) => {
+
+    const itemId = req.params.id
+
+    let query = `
+    SELECT * FROM item 
+    WHERE id = ?
+    `;
+
+    db.query(query, [itemId], (err, data) => {
+        if (err) return res.status(500).json(err);
+        return res.status(200).json(data);
+    });
+};
