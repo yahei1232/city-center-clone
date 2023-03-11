@@ -1,13 +1,37 @@
 import { DataGrid } from '@mui/x-data-grid';
 import DeleteOutlineSharpIcon from '@mui/icons-material/DeleteOutlineSharp';
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from 'axios';
 
 export default function ProductList() {
     const [data, setData] = useState([]);
 
 
+    const fetchLaptops = async () => {
+        try {
+            const response = await axios.get(`http://localhost:8800/api/item/items`, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            setData(response?.data);
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    useEffect(() => {
+        fetchLaptops();
+    }, []);
+
     const handleDelete = async (id) => {
+        try {
+            await axios.delete(`http://localhost:8800/api/item/deleteitems/${id}`);
+            fetchLaptops()
+        } catch (error) {
+            console.error(error);
+        }
     };
 
     const columns = [
