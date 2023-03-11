@@ -55,7 +55,6 @@ export const addItem = (req, res) => {
     });
 };
 
-
 export const items = (req, res) => {
 
     let query = `SELECT * FROM item ORDER BY price ASC`;

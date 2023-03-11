@@ -7,6 +7,7 @@ import axios from 'axios';
 export default function ProductList() {
     const [data, setData] = useState([]);
 
+    // console.log(data);
 
     const fetchLaptops = async () => {
         try {

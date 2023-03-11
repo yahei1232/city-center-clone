@@ -26,7 +26,7 @@ import AdminNewProduct from "./admin/pages/NewProduct";
 import AdminProductList from "./admin/pages/Productlist";
 import ItemsSearch from "./pages/ItemSearch";
 import AdminOrderslist from "./admin/pages/Orderlist";
-import AdminProduct from "./admin/pages/Productlist";
+import AdminProduct from "./admin/pages/Updateproduct";
 
 const Layout = () => {
   return (
