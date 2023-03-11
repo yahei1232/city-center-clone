@@ -1,19 +1,52 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react'
+import { useLocation } from 'react-router-dom';
 
-function item() {
+function Item() {
+
+    const [quantity, setQuantity] = useState(1);
+    const [item, setItem] = useState({});
+
+    const handleQuantityChange = (e) => {
+        setQuantity(parseInt(e.target.value));
+    };
+
+
+    const location = useLocation();
+
+    const itemId = location.pathname.split("/")[2];
+
+    const fetchLaptops = async () => {
+        try {
+            const response = await axios.get(`http://localhost:8800/api/item/${itemId}`, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            setItem(response?.data[0]);
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    useEffect(() => {
+        fetchLaptops();
+    }, []);
+
+
     return (
-        <div className='item column'>
+        <div className='Single column'>
             <div className="top">
                 <div className="leftSide">
-                    <h1>title</h1>
-                    <p>description</p>
+                    <h1>{item.name}</h1>
+                    <p>{item.description}</p>
                     <img width='350px' height='350px' src="https://image.citycenter.jo/cachewebp/catalog/0112022/CK000-1200x1200.webp" alt="" />
                     <hr />
                 </div>
                 <div className="rightSide">
                     <div className='row spa'>
                         <div className="price">
-                            <h1>$549</h1>
+                            <h1>${item.price}</h1>
                             <h3>$729.00</h3>
                             <h5>You save $50.00</h5>
                         </div>
@@ -34,7 +67,7 @@ function item() {
                     </div>
                     <hr className='hr' />
                     <div className="add-to-cart row">
-                        <input min="1" type="number" className='the-number' />
+                        <input min="1" value={quantity} onChange={handleQuantityChange} type="number" className='the-number' />
                         <button className='the-number add'>Add to Cart</button>
                         <button className='the-number get'>Get off by Email</button>
                     </div>
@@ -62,4 +95,4 @@ function item() {
     )
 }
 
-export default item
+export default Item
