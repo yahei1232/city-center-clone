@@ -7,11 +7,13 @@ import {
     deleteitems,
     searchItems,
     getRendomItems,
-    getRendomItemsADS
+    getRendomItemsADS,
+    filter,
 } from "../controllers/item.js";
 
 const router = express.Router();
 
+router.get("/filter", filter);
 router.post("/addItem", addItem);
 router.get("/items", items);
 router.get("/:id", getItems);
