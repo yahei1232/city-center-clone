@@ -23,7 +23,6 @@ function Item() {
     const location = useLocation();
 
     const itemId = location.pathname.split("/")[2];
-    // console.log(item);
 
     const fetchLaptops = async () => {
         try {
