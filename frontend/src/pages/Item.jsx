@@ -1,20 +1,29 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { addToCart } from '../redux/cartSlice';
 
 function Item() {
 
     const [quantity, setQuantity] = useState(1);
     const [item, setItem] = useState({});
 
+    const dispatch = useDispatch();
+
     const handleQuantityChange = (e) => {
         setQuantity(parseInt(e.target.value));
+    };
+
+    const handleAddToCart = () => {
+        dispatch(addToCart({ ...item, quantity }));
     };
 
 
     const location = useLocation();
 
     const itemId = location.pathname.split("/")[2];
+    // console.log(item);
 
     const fetchLaptops = async () => {
         try {
@@ -68,7 +77,7 @@ function Item() {
                     <hr className='hr' />
                     <div className="add-to-cart row">
                         <input min="1" value={quantity} onChange={handleQuantityChange} type="number" className='the-number' />
-                        <button className='the-number add'>Add to Cart</button>
+                        <button onClick={handleAddToCart} className='the-number add'>Add to Cart</button>
                         <button className='the-number get'>Get off by Email</button>
                     </div>
                 </div>
