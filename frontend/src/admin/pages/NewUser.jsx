@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import { useState } from 'react';
 
 export default function NewUser() {
@@ -12,16 +14,28 @@ export default function NewUser() {
         isAdmin: "",
     });
 
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         console.log(e.target.name)
         setInputs((prev) => ({ ...prev, [e.target.name]: e.target.value }));
     };
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            await axios.post("http://localhost:8800/api/auth/register", inputs);
+            navigate("/admin");
+        } catch (err) {
+            console.log("err");
+            console.log(err);
+        }
+    };
+
     return (
         <div className="newUser">
             <h1 className="newUserTitle">New User</h1>
-            <form className="newUserForm">
+            <form onSubmit={handleSubmit} className="newUserForm">
                 <div className="newUserItem">
                     <label>Username</label>
                     <input name="username" onChange={handleChange} type="text" placeholder="john" />

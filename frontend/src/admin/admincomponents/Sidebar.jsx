@@ -12,25 +12,25 @@ function Sidebar() {
                 <div className="sidebarMenu">
                     <h3 className="sidebarTitle">Dashboard</h3>
                     <ul className="sidebarList">
-                        <Link to="/" className="link">
+                        <Link to="/admin" className="link">
                             <li className="sidebarListItem active">
                                 <LineStyleSharpIcon className="sidebarIcon" />
                                 Home
                             </li>
                         </Link>
-                        <Link to='/' className='link'>
+                        <Link to='/adminnewuser' className='link'>
                             <li className="sidebarListItem">
                                 <AddCircleOutlineSharpIcon className="sidebarIcon" />
                                 Add user
                             </li>
                         </Link>
-                        <Link to='' className='link'>
+                        <Link to='adminproductlst' className='link'>
                             <li className="sidebarListItem">
                                 <LocalMallSharpIcon className="sidebarIcon" />
                                 Product
                             </li>
                         </Link>
-                        <Link to='' className='link'>
+                        <Link to='adminorderlist' className='link'>
                             <li className="sidebarListItem">
                                 <SellSharpIcon className="sidebarIcon" />
                                 order
