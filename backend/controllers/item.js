@@ -1,5 +1,37 @@
 import { db } from "../connect.js";
 
+export const filter = (req, res) => {
+    const { cpu, gpu, memory, min, max } = req.query;
+
+    let query = `
+    SELECT * FROM item
+    WHERE 1=1
+    `;
+
+    if (cpu) {
+        query += `AND (cpu = '${cpu}')`;
+    }
+
+    if (gpu) {
+        query += `AND (gpu = '${gpu}')`;
+    }
+
+    if (memory) {
+        query += `AND (memory >= ${memory})`;
+    }
+
+    if (min && max) {
+        query += `AND (price BETWEEN ${min} AND ${max})`;
+    }
+
+    query += `ORDER BY price ASC`;
+
+
+    db.query(query, (err, data) => {
+        if (err) return res.status(500).json(err);
+        return res.status(200).json(data);
+    });
+};
 
 export const addItem = (req, res) => {
 
