@@ -1,53 +1,140 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Outlet,
+} from "react-router-dom";
+//CUSTEMRS
 import "./style.scss"
-import "./admin/adminstyle.scss"
-
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
-import Items from "./pages/Items";
 import Item from "./pages/Item";
+import Navbar from "./components/Navbar";
+import Items from "./pages/Items";
 import Cart from "./pages/Cart";
 import Profile from "./pages/Profile";
-import ItemsSearch from "./pages/ItemSearch";
-import Filter from "./components/Filter";
 
-//ADMIN PAGE
+//ADMIN
+
+import "./admin/adminstyle.scss"
 import AdminNavbar from "./admin/admincomponents/Navbar";
 import AdminSidebar from "./admin/admincomponents/Sidebar";
 import AdminHome from "./admin/pages/Home";
-import AdminProductlist from "./admin/pages/Productlist";
-import AdminUpdateProduct from "./admin/pages/Updateproduct";
-import AdminNewProduct from "./admin/pages/NewProduct";
 import AdminNewUser from "./admin/pages/NewUser";
+import AdminNewProduct from "./admin/pages/NewProduct";
+import AdminProductList from "./admin/pages/Productlist";
+import { useSelector } from "react-redux";
+import ItemsSearch from "./pages/ItemSearch";
 import AdminOrderslist from "./admin/pages/Orderlist";
+import AdminProduct from "./admin/pages/Productlist";
+
+const Layout = () => {
+  return (
+    <>
+      <Navbar />
+      <Outlet />
+    </>
+  );
+};
+
+const AdminLayout = () => {
+  return (
+    <>
+      <AdminNavbar />
+      <div className="row">
+        <AdminSidebar className="f1" />
+        <Outlet className="f2" />
+      </div>
+    </>
+  );
+};
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Layout />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/items",
+        element: <Items />,
+      },
+      {
+        path: "/item/:id",
+        element: <Item />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
+      },
+      {
+        path: "/itemssearch",
+        element: <ItemsSearch />,
+      },
+      {
+        path: "/profile",
+        element: <Profile />,
+      },
+    ],
+  },
+  {
+    path: "/register",
+    element: <Register />,
+  },
+  {
+    path: "/login",
+    element: <Login />,
+  },
+]);
+
+const router1 = createBrowserRouter([
+  {
+    path: "/",
+    element: <AdminLayout />,
+    children: [
+      {
+        path: "/admin",
+        element: <AdminHome />,
+      },
+      {
+        path: "/adminnewuser",
+        element: <AdminNewUser />,
+      },
+      {
+        path: "/product/:productId",
+        element: <AdminProduct />,
+      },
+      {
+        path: "/adminnewproduct",
+        element: <AdminNewProduct />,
+      },
+      {
+        path: "/adminproductlst",
+        element: <AdminProductList />,
+      },
+      {
+        path: "/adminorderlist",
+        element: <AdminOrderslist />,
+      },
+    ],
+  }
+]);
 
 function App() {
+  const currentUserIsAdmin = useSelector(state => state?.user?.currentUser?.isAdmin);
+  // console.log(currentUserIsAdmin);
   return (
     <div className="app">
-      <div className="container">
-        <Router>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/items" element={<Items />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/item/:id" element={<Item />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/itemssearch" element={<ItemsSearch />} />
-            <Route path="/filter" element={<Filter />} />
-            <Route path="/adminnavbar" element={<AdminNavbar />} />
-            <Route path="/adminsidebar" element={<AdminSidebar />} />
-            <Route path="/adminhome" element={<AdminHome />} />
-            <Route path="/adminproductlist" element={<AdminProductlist />} />
-            <Route path="/adminupdateproduct" element={<AdminUpdateProduct />} />
-            <Route path="/adminnewproduct" element={<AdminNewProduct />} />
-            <Route path="/adminnewuser" element={<AdminNewUser />} />
-            <Route path="/adminorderslist" element={<AdminOrderslist />} />
-          </Routes>
-        </Router>
-      </div>
+      {currentUserIsAdmin === "true" ? (
+        <RouterProvider router={router1} />
+      ) : (
+        <div className="container">
+          <RouterProvider router={router} />
+        </div>
+      )}
     </div>
   );
 }

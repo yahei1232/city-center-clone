@@ -57,7 +57,7 @@ function Navbar() {
 
     const handleSearch = async () => {
         try {
-            const response = await axios.get(`http://localhost:8800/api/item/asdd/${name1}`,
+            const response = await axios.get(`http://localhost:8800/api/item/search/${name1}`,
                 { withCredentials: true });
             // setResults(response?.data);
             // console.log(response?.data);
