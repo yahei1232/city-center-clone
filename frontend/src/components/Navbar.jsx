@@ -7,12 +7,37 @@ import logo from '../assets/logo.png';
 import DiamondSharpIcon from '@mui/icons-material/DiamondSharp';
 import FacebookSharpIcon from '@mui/icons-material/FacebookSharp';
 import WorkSharpIcon from '@mui/icons-material/WorkSharp';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import axios from 'axios';
+import { searchItems } from '../redux/searchSlice';
+import { logout } from '../redux/userSlice';
 
 function Navbar() {
 
+    const carts = useSelector(state => state?.cart?.cartItems)
+    const navigate = useNavigate();
+
+    const user = useSelector(state => state?.user?.currentUser?.token)
+    // console.log(carts);
+
+    //TOTAL PRICE CALCOLATE
+
+    let totalPrice = 0;
+
+    for (let i = 0; i < carts.length; i++) {
+        const normalPrice = carts[i].price;
+        const quantite = +carts[i].quantity;
+        // console.log(quantite);
+        // console.log(normalPrice);
+        totalPrice += (quantite * normalPrice)
+    }
+
     const [showMenu, setShowMenu] = useState(false);
     const [showMenu2, setShowMenu2] = useState(false);
+
+    const [name1, setQuery] = useState("");
+    // const [results, setResults] = useState([]);
 
     const cat = [
         "Computer Hardware",
@@ -24,13 +49,45 @@ function Navbar() {
         "Powered by ASUS"
     ]
 
+    const dispatch = useDispatch();
+
+    const handleInputChange = (event) => {
+        setQuery(event.target.value);
+    };
+
+    const handleSearch = async () => {
+        try {
+            const response = await axios.get(`http://localhost:8800/api/item/asdd/${name1}`,
+                { withCredentials: true });
+            // setResults(response?.data);
+            // console.log(response?.data);
+            dispatch(searchItems(response?.data));
+            navigate("/itemssearch")
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    const logOutHandler = async () => {
+        try {
+            await axios.post(`http://localhost:8800/api/auth/logout`);
+            document.cookie = "accessToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            dispatch(logout())
+            navigate("/login")
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
     return (
         <div className='navbar'>
             <div className="top">
-                <img src={logo} alt="" className="logo" />
+                <Link to="/">
+                    <img src={logo} alt="" className="logo" />
+                </Link>
                 <div className="search-sub">
-                    <input type="search" name="" placeholder='Search' />
-                    <button className='sub'>SEARCH</button>
+                    <input value={name1} onChange={handleInputChange} type="search" placeholder='Search' />
+                    <button onClick={() => handleSearch()} className='sub'>SEARCH</button>
                 </div>
                 <div className="ui-account">
                     <div className="parent" onClick={() => setShowMenu(!showMenu)}>
@@ -41,17 +98,23 @@ function Navbar() {
 
                             {showMenu && (
                                 <ul className="menu" >
-                                    <li>
-                                        <Link className='link' to='/login'>
-                                            Login
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link className='link' to='/register'>
-                                            Reguster
-                                        </Link>
-                                    </li>
-                                    <li>logout</li>
+                                    {user ? (
+                                        <>
+                                            <Link className='link gray' to="profile">
+                                                <li>Profile</li>
+                                            </Link>
+                                            <li onClick={logOutHandler}>Logout</li>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <Link className='gray link' to="/login">
+                                                <li>Login</li>
+                                            </Link>
+                                            <Link className='gray link' to="/register">
+                                                <li>Reguster</li>
+                                            </Link>
+                                        </>
+                                    )}
                                 </ul>
                             )}
                         </div>
@@ -60,9 +123,11 @@ function Navbar() {
                 <div className="pcjod">
                     <LoopIcon />
                     <div className="cjod">
-                        <ShoppingCartSharpIcon />
-                        <div className="Cart">Cart (0)</div>
-                        <h3>JOD 0.00</h3>
+                        <Link to="/cart" className='gray'>
+                            <ShoppingCartSharpIcon />
+                        </Link>
+                        <div className="Cart">Cart ({carts.length})</div>
+                        <h3>${totalPrice}</h3>
                     </div>
                 </div>
             </div>
