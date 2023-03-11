@@ -1,16 +1,45 @@
 import { DataGrid } from '@mui/x-data-grid';
 import DeleteOutlineSharpIcon from '@mui/icons-material/DeleteOutlineSharp';
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from 'axios';
 
 function Orderslist() {
     const [data, setData] = useState([]);
 
+    const fetchOrders = async () => {
+        try {
+            const response = await axios.get(`http://localhost:8800/api/order/getAll`, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            setData(response?.data);
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    useEffect(() => {
+        fetchOrders();
+    }, []);
 
     const handleDelete = async (id) => {
+        try {
+            await axios.delete(`http://localhost:8800/api/order/deleteOrder/${id}`);
+            fetchOrders()
+        } catch (error) {
+            console.error(error);
+        }
     };
 
     const handleDone = async (id) => {
+        try {
+            await axios.put(`http://localhost:8800/api/order/doneOrder/${id}`);
+            fetchOrders()
+        } catch (error) {
+            console.error(error);
+        }
     };
 
     const columns = [
@@ -71,6 +100,9 @@ function Orderslist() {
     ];
     return (
         <div className="productList">
+            <Link to="/adminnewproduct">
+                <button className="productAddButton">Create</button>
+            </Link>
             <DataGrid
                 rows={data}
                 disableSelectionOnClick
