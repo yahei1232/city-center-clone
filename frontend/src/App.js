@@ -3,6 +3,8 @@ import {
   RouterProvider,
   Outlet,
 } from "react-router-dom";
+import { useSelector } from "react-redux";
+
 //CUSTEMRS
 import "./style.scss"
 import Register from "./pages/Register";
@@ -15,7 +17,6 @@ import Cart from "./pages/Cart";
 import Profile from "./pages/Profile";
 
 //ADMIN
-
 import "./admin/adminstyle.scss"
 import AdminNavbar from "./admin/admincomponents/Navbar";
 import AdminSidebar from "./admin/admincomponents/Sidebar";
@@ -23,7 +24,6 @@ import AdminHome from "./admin/pages/Home";
 import AdminNewUser from "./admin/pages/NewUser";
 import AdminNewProduct from "./admin/pages/NewProduct";
 import AdminProductList from "./admin/pages/Productlist";
-import { useSelector } from "react-redux";
 import ItemsSearch from "./pages/ItemSearch";
 import AdminOrderslist from "./admin/pages/Orderlist";
 import AdminProduct from "./admin/pages/Productlist";

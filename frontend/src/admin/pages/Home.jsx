@@ -1,11 +1,31 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { DataGrid } from '@mui/x-data-grid';
-
+import axios from 'axios';
 
 function Home() {
 
     const [data, setData] = useState([]);
 
+    const fetchLaptops = async () => {
+        try {
+            const response = await axios.get(`http://localhost:8800/api/user/`, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            setData(response?.data);
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
+    useEffect(() => {
+        fetchLaptops();
+    }, []);
+
+    const handleDelete = (id) => {
+        setData(data.filter((item) => item.id !== id));
+    };
 
     const columns = [
         { field: "id", headerName: "ID", width: 90 },
